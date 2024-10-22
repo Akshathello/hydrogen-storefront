@@ -3,9 +3,13 @@
   --cart-aside-summary-height-with-discount: 300px;
   --cart-aside-summary-height: 250px;
   --grid-item-width: 355px;
-  --header-height: 64px;
+  --header-height: 90px;
   --color-dark: #000;
   --color-light: #fff;
+  --chilli-red: rgba(202,60,37,1); 
+  --smoky-black:rgba(29,26,5,1);
+  --fawn: rgba(255,251,189,1);
+  --announcement-bar-height: 45px;
 }
 
 img {
@@ -90,6 +94,27 @@ aside li {
   z-index: 10;
 }
 
+.chilli-red{
+  background-color:rgba(202,60,37,1);
+}
+.lemon-chiffon{
+  background-color:rgba(230,170,104,1);
+}
+.fawn{
+  background-color:rgba(255,251,189,1);
+}
+.smoky-black{
+  background-color:rgba(29,26,5,1);
+}
+.asparagus{
+  background-color:rgba(127,176,105,1);
+}
+
+
+.Clash-Display{
+  font-family: 'ClashDisplay-Regular';
+}
+
 .overlay .close-outside {
   background: transparent;
   border: none;
@@ -142,20 +167,44 @@ button.reset:hover:not(:has(> *)) {
   cursor: pointer;
 }
 
+
+/*
+* Announcement Bar
+*
+*/
+
+.announcement-bar{
+  align-items: center;
+  display:inline-flex;
+  top:0;
+  position:sticky;
+  z-index: 1;
+  height: var(--announcement-bar-height);
+  background-color: var(--fawn);
+  text-decoration-color: var(--chilli-red);
+  -webkit-text-fill-color: var(--chilli-red);
+  text-shadow: 1.5px 0px 0px rgba(29,26,5,1);
+}
+
+
+
 /*
 * --------------------------------------------------
 * components/Header
 * --------------------------------------------------
 */
+
+
 .header {
   align-items: center;
-  background: #fff;
   display: flex;
   height: var(--header-height);
   padding: 0 1rem;
   position: sticky;
   top: 0;
   z-index: 1;
+  border-bottom-width: 3px;
+  border-color: var(--smoky-black) ;
 }
 
 .header-menu-mobile-toggle {

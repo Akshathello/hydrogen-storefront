@@ -1,4 +1,5 @@
 import {Suspense} from 'react';
+import {motion} from 'framer-motion';
 import {Await, NavLink, useAsyncValue} from '@remix-run/react';
 import {
   type CartViewPayload,
@@ -7,6 +8,7 @@ import {
 } from '@shopify/hydrogen';
 import type {HeaderQuery, CartApiQueryFragment} from 'storefrontapi.generated';
 import {useAside} from '~/components/Aside';
+import sparkler from '../assets/sparkler.svg';
 
 interface HeaderProps {
   header: HeaderQuery;
@@ -25,18 +27,52 @@ export function Header({
 }: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header">
-      <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>{shop.name}</strong>
-      </NavLink>
-      <HeaderMenu
-        menu={menu}
-        viewport="desktop"
-        primaryDomainUrl={header.shop.primaryDomain.url}
-        publicStoreDomain={publicStoreDomain}
-      />
-      <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
-    </header>
+    <>
+      <div className="overflow-hidden whitespace-nowrap">
+        <motion.div
+          className="announcement-bar text-[25px] font-extrabold gap-5 "
+          animate={{x: ['0%', '-100%']}}
+          transition={{repeat: Infinity, duration: 10, ease: 'linear'}}
+        >
+          {' '}
+          <span>Conventionality is a Myth</span>
+          <img src={sparkler} alt="Icon" width="24" height="24" />
+          <span className="italic">Conventionality is a Myth</span>
+          <img src={sparkler} alt="Icon" width="24" height="24" />
+          <span>Conventionality is a Myth</span>
+          <img src={sparkler} alt="Icon" width="24" height="24" />
+          <span className="italic">Conventionality is a Myth</span>
+          <img src={sparkler} alt="Icon" width="24" height="24" />
+        </motion.div>
+        <motion.div
+          className="announcement-bar text-[25px] font-extrabold gap-5 pl-5"
+          animate={{x: ['0%', '-100%']}}
+          transition={{repeat: Infinity, duration: 10, ease: 'linear'}}
+        >
+          {' '}
+          <span>Conventionality is a Myth</span>
+          <img src={sparkler} alt="Icon" width="24" height="24" />
+          <span className="italic">Conventionality is a Myth</span>
+          <img src={sparkler} alt="Icon" width="24" height="24" />
+          <span>Conventionality is a Myth</span>
+          <img src={sparkler} alt="Icon" width="24" height="24" />
+          <span className="italic">Conventionality is a Myth</span>
+          <img src={sparkler} alt="Icon" width="24" height="24" />
+        </motion.div>
+      </div>
+      <header className="header lemon-chiffon font-sans text-3xl">
+        <NavLink prefetch="intent" to="/" end>
+          <strong>{shop.name}</strong>
+        </NavLink>
+        <HeaderMenu
+          menu={menu}
+          viewport="desktop"
+          primaryDomainUrl={header.shop.primaryDomain.url}
+          publicStoreDomain={publicStoreDomain}
+        />
+        <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      </header>
+    </>
   );
 }
 
@@ -226,6 +262,6 @@ function activeLinkStyle({
 }) {
   return {
     fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'black',
+    color: isPending ? 'white' : 'black',
   };
 }
